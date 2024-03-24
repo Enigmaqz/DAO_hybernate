@@ -4,21 +4,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.netology.service.ProductService;
+import ru.netology.entity.Person;
+import ru.netology.service.PersonService;
 
 import java.util.List;
 
 @RestController
-public class ProductController {
-    ProductService service;
+public class PersonController {
+    PersonService service;
 
-    public ProductController(ProductService service) {
+    public PersonController(PersonService service) {
+
+
         this.service = service;
     }
 
-    @GetMapping("/products/fetch-product")
+    @GetMapping("/persons/by-city")
     @ResponseBody
-    public List<String> getProduct(@RequestParam("name") String name) {
-        return service.getProducts(name);
+    public List<Person> getProduct(@RequestParam("city") String city) {
+        return service.getPersonsByCity(city);
     }
 }
